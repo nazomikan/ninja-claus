@@ -1,0 +1,19 @@
+{
+  "name": "nko4-kusattamikan",
+  "version": "0.0.0",
+  "description": "kusattamikan",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nko4/kusattamikan.git"
+  },
+  "dependencies": {
+    "nko": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
