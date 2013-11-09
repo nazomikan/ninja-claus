@@ -10,7 +10,7 @@ http.createServer(function (req, res) {
   var voteko = '<iframe src="http://nodeknockout.com/iframe/kusattamikan" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe>';
 
   res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('<html><body>' + voteko + '</body></html>\n');
+  res.end('<html><body>' + voteko + '@nazomikan, @simeji</body></html>\n');
 }).listen(port, function(err) {
   if (err) { console.error(err); process.exit(-1); }
 

@@ -1,6 +1,6 @@
 {
   "name": "nko4-kusattamikan",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "kusattamikan",
   "main": "server.js",
   "scripts": {
