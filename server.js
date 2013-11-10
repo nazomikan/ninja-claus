@@ -102,13 +102,8 @@ io.sockets.on('connection', function(socket) {
 
   // @param {Object.<string>} attack_id  : id who attacked person
   socket.on('damagereceive', function(data){
-    var reduceNum = 1
-      , addNum = 1 // add attack parson
-      , giftCount = userData[uuidMap[socket.id]].gift - reduceNum
-      , attack_socket_id
+    var attack_socket_id
       ;
-
-    userData[uuidMap[socket.id]].gift -= reduceNum;
 
     _.each(uuidMap, function (val, key, obj) {
       if (val == data.attack_id) {
@@ -116,21 +111,7 @@ io.sockets.on('connection', function(socket) {
       }
     });
 
-    // if only menage gift number at client side, not required
-    /*
-     *socket.json.emit('damagereceive', {
-     *  giftCount: giftCount
-     *});
-     */
-
-    io.sockets.socket(attack_socket_id).json.emit('prizereceive', {
-      // do something if point get
-    });
-
-    // no required
-    //socket.broadcast.json.volatile.emit('damagereceive', {
-      //gift: giftCount
-    //});
+    io.sockets.socket(attack_socket_id).json.emit('prizereceive', {});
   });
 
   // @param {Object.<string>} id  : target uuid
