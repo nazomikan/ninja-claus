@@ -1,20 +1,15 @@
 /**
  * Module dependencies.
  */
-
-
-
 require('nko')('0UmCzdA1IpmjkOyn');
 var express = require('express');
 var routes = require('./routes');
-//var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var _ = require('underscore');
 var app = express();
 var isProduction = app.get('env') === 'production';
 var port = isProduction ? 80: 8000;
-//var User = require(path.join(__dirname, 'models')).User;
 
 
 // Configuration
@@ -36,12 +31,7 @@ if ('development' == app.get('env')) {
 }
 
 // Routes
-
 app.get('/', routes.index);
-// app.get('/user', routes.listUser);
-// app.post('/user', routes.createUser);
-// app.get('/user/:id', routes.user);
-// app.put('/user/:id', routes.updateUser);
 
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
@@ -63,36 +53,23 @@ io.sockets.on('connection', function(socket) {
 
   // create uuid and save
   uuidMap[socket.id + ''] = {};
+  // likely RFC 4122
   uuid = (function(){
-    var S4 = function() {
+    // create random string
+    var crs = function() {
       return (((1 + Math.random())*0x10000)|0).toString(16).substring(1);
-    }  
-    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+    }
+    return (crs() + crs() + "-" + crs() + "-" + crs() + "-" + crs() + "-" + crs() + crs() + crs());
   })();
 
-  //user = new User({
-    //uuid: uuidMap[socket.id + ''],
-    //gift: 20,
-    //score: 0
-  //});
-  
-  //user.save(function (err, result) {
-    //if (err) {
-      //cosole.log("database error!!"+req.body.toString());
-    //}
-  //});
-
-  // Initalize User 
+  // Initalize User
   uuidMap[socket.id + ''] = uuid;
-
   userData[uuid] = {
     gift: 20,
     score: 0
   }
 
-
   socket.on('ninjamove', function(data) {
-    // UUID coordinate
     socket.broadcast.json.volatile.emit('enemymove',{
       x: data.x,
       y: data.y,
@@ -101,17 +78,18 @@ io.sockets.on('connection', function(socket) {
     });
   });
 
+  // delete session
+  // delted uuid
   socket.on('disconnect', function() {
     var uuid = uuidMap[socket.id + '']
-    // delete session
     uuidMap[socket.id + ''] = null;
     delete uuidMap[socket.id + ''];
-    // delted uuid 
     socket.broadcast.json.volatile.emit('enemydisconnect',{
       id: uuid
     });
   });
 
+  // gameover
   socket.on('gameover', function(){
     var uuid = uuidMap[socket.id + '']
     uuidMap[socket.id + ''] = null;
@@ -120,13 +98,6 @@ io.sockets.on('connection', function(socket) {
       id: uuid
     });
     socket.disconnect();
-  });
-
-  socket.on('deliver', function(data){
-    userData[uuidMap[socket.id + '']].gift -= 1;
-    socket.json.volatile.emit('deliver', {
-      gift: giftCount
-    });
   });
 
   // @param {Object.<string>} attack_id  : id who attacked person
@@ -156,14 +127,9 @@ io.sockets.on('connection', function(socket) {
       // do something if point get
     });
 
-    // no required??
+    // no required
     //socket.broadcast.json.volatile.emit('damagereceive', {
       //gift: giftCount
-    //});
-
-    //User.findByUUIdAndPointAdd(uuidMap[socket.id + ''], data.point, function(err, result){
-      //console.log(uuidMap[socket.id]);
-      //console.log("pointup!");
     //});
   });
 
@@ -190,6 +156,4 @@ io.sockets.on('connection', function(socket) {
       y: data.y
     });
   });
-
 });
-
