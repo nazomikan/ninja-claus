@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  #page-1
+    div
+      h1.title Ninja Claus -忍者クロース-
+      iframe.vote(src="http://nodeknockout.com/iframe/kusattamikan", frameborder=0, scrolling=no, allowtransparency=true, width=115, height=25)
+    #prg-game-window.game-window
+      #introduction.intro
+        div.info
+          p [→] turn a right
+          p [←] trurn a left
+          p [↑] rise up
+          p [↓] down
+          p [space] Press once, power to be accumulate. Pressed again and Throw a gift.
+        div.launcher
+          div.story
+            p Let's throw a present chimney. So, today is Xmas!
+            p Let's eliminate rivals! Hahaha
+          div.proceed
+            | Start
+            | <span class="glyphicon glyphicon-bell"></span>
+      #prg-game-display.game-display
+      .gauge
+        | power
+        .progress.progress-striped.active
+          #prg-power-gauge.progress-bar.progress-bar-success(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width: 0%')
+      .scoreboad
+        p
+          span
+            span SCORE:
+            | <span id="score" class="score">0</span>point
+          span.life-box
+            img(src="/images/gift.gif")
+            | x <span id="life" class="life-point">10</span>

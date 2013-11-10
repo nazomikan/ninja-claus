@@ -1,0 +1,24 @@
+doctype 5
+html
+  head
+    title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type="text/javascript", src="/javascripts/library/jquery-1.10.2.min.js")
+    script(src='/socket.io/socket.io.js' ,type='text/javascript')
+    script(type="text/javascript", src="/javascripts/library/pubsub.js")
+    script(type="text/javascript", src="/javascripts/library/namespace.js")
+    script(type="text/javascript", src="/components/bootstrap/dist/js/bootstrap.js")
+    script(type="text/javascript", src="/javascripts/app/index.js")
+    script(type="text/javascript", src="/javascripts/app/Game.js")
+    script(type="text/javascript", src="/javascripts/app/Field.js")
+    script(type="text/javascript", src="/javascripts/app/SuperTimer.js")
+    script(type="text/javascript", src="/javascripts/app/widget/Gauge.js")
+    script(type="text/javascript", src="/javascripts/app/widget/Ninja.js")
+    script(type="text/javascript", src="/javascripts/app/widget/Enemy.js")
+    script(type="text/javascript", src="/javascripts/app/widget/House.js")
+    script(type="text/javascript", src="/javascripts/app/data/config.js")
+    script(type="text/javascript", src="/javascripts/app/data/house_position.js")
+  body
+    block content

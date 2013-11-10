@@ -11,7 +11,12 @@
     "url": "git@github.com:nko4/kusattamikan.git"
   },
   "dependencies": {
-    "nko": "*"
+    "nko": "*",
+    "express": "3.4.4",
+    "jade": "*",
+    "stylus": "*",
+    "socket.io": "*",
+    "underscore": "~1.5.2"
   },
   "engines": {
     "node": "0.10.x"
