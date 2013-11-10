@@ -7,7 +7,7 @@
   Game.prototype.build = function () {
     var field = new app.Field()
       , timer = new app.SuperTimer()
-      , audio = new Audio('/audio/sound.mp3')
+      , audio = new Audio('/audio/sound.ogg')
       ;
 
     timer.build();
