@@ -28,6 +28,7 @@
   };
 
   Ninja.prototype.bindAllListeners = function () {
+    app.socket.on('prizereceive', $.proxy(this.addBonus, this));
     pubsub.subscribe('supertimer.scene.next', $.proxy(this.move, this));
     pubsub.subscribe('gauge.fired', $.proxy(this.throw, this));
     pubsub.subscribe('enemy.gift.threw', $.proxy(this.takeAttack, this));
@@ -207,7 +208,7 @@
         if (isHit || posY > grandHeight) {
           if (isHit) {
             score = $('#score');
-           score.text(+score.text() + (per / 10));
+            score.text(+score.text() + (per / 10));
           }
           gift.remove();
           that.clumpGift();
@@ -219,6 +220,13 @@
         }
       });
     }(0));
+  };
+
+  Ninja.prototype.addBonus = function () {
+    var score = $('#score')
+      ;
+
+    score.text(+score.text() + 2);
   };
 
   Ninja.prototype.thx = function (correctX, correctY) {
@@ -287,6 +295,9 @@
 
     if (isHit) {
       this.stage.append(gift);
+      app.socket.emit('damagereceive', {
+        attack_id: enemyData.uuid
+      });
       (function lazyLoop(top) {
         top = top || topS;
         gift.css({
