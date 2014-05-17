@@ -133,7 +133,11 @@
   Field.prototype.onEnemyDisappear = function (data) {
     var uuid = data.id
      , enemy = this.enemies[uuid]
+     , playerCount
      ;
+
+    playerCount = data.playerCount || 1;
+    $('#playerCount').text(playerCount);
 
     if (enemy) {
       delete this.enemies[uuid];

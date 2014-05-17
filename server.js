@@ -104,10 +104,16 @@ io.sockets.on('connection', function(socket) {
   // gameover
   socket.on('gameover', function(){
     var uuid = uuidMap[socket.id + '']
+      , playerCount
+      ;
+
     uuidMap[socket.id + ''] = null;
     delete uuidMap[socket.id + ''];
+
+    playerCount = Object.keys(uuidMap).length;
     socket.broadcast.json.volatile.emit('enemydisconnect',{
-      id: uuid
+      id: uuid,
+      playerCount: playerCount
     });
     socket.disconnect();
   });
