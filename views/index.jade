@@ -4,7 +4,6 @@ block content
   #page-1
     div
       h1.title Ninja Claus -忍者クロース-
-      iframe.vote(src="http://nodeknockout.com/iframe/kusattamikan", frameborder=0, scrolling=no, allowtransparency=true, width=115, height=25)
     #prg-game-window.game-window
       #introduction.intro
         div.info
@@ -33,3 +32,8 @@ block content
           span.life-box
             img(src="/images/gift.gif")
             | x <span id="life" class="life-point">10</span>
+      .playersInfo
+        | 現在のプレイヤー数:
+        | 
+        span#playerCount.playerCount 1
+        | 人

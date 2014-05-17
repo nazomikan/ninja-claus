@@ -13,6 +13,13 @@
     this.top = 10;
     this.gift = null;
     this.life = app.data.config.max_throw_count;
+    this.audioThx = new Audio('/audio/thx.ogg');
+    this.audioThx.loop = false;
+    this.audioThx.autoplay = false;
+
+    this.audioDamage = new Audio('/audio/damage.ogg');
+    this.audioDamage.loop = false;
+    this.audioDamage.autoplay = false;
   }
 
   Ninja.prototype.build = function () {
@@ -234,6 +241,9 @@
       , inner = $('<div></div>').addClass('in')
       ;
 
+    this.audioThx.load();
+    this.audioThx.play();
+
     inner.text('thank you!!');
     thx.append(inner);
     thx.css({
@@ -295,6 +305,12 @@
 
     if (isHit) {
       this.stage.append(gift);
+
+
+      // damage
+      this.audioDamage.load();
+      this.audioDamage.play();
+
       app.socket.emit('damagereceive', {
         attack_id: enemyData.uuid
       });

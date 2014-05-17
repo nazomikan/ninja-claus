@@ -103,7 +103,11 @@
   Field.prototype.onEnemyMove = function (data) {
     var uuid = data.id
      , enemy = this.enemies[uuid]
+     , playerCount
      ;
+
+    playerCount = data.playerCount || 1;
+    $('#playerCount').text(playerCount);
 
     if (!enemy) {
       enemy = new app.widget.Enemy(data);

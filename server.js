@@ -80,11 +80,13 @@ io.sockets.on('connection', function(socket) {
   }
 
   socket.on('ninjamove', function(data) {
+    var playerCount = Object.keys(uuidMap).length;
     socket.broadcast.json.volatile.emit('enemymove',{
       x: data.x,
       y: data.y,
       direction: data.direction,
-      id: uuidMap[socket.id + '']
+      id: uuidMap[socket.id + ''],
+      playerCount: playerCount
     });
   });
 
