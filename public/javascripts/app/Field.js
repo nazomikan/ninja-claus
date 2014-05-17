@@ -11,6 +11,10 @@
     this.direction = +1;
     this.chimney = [];
     this.enemies = {};
+    this.audioFinish = new Audio('/audio/finish.ogg');
+    this.audioFinish.loop = false;
+    this.audioFinish.autoplay = false;
+    this.audioFinish.volume = 1;
   }
 
   Field.prototype.build = function () {
@@ -36,7 +40,15 @@
   };
 
   Field.prototype.onGameOver = function () {
-    var scoreboad = this.window.find('.scoreboad');
+    var scoreboad = this.window.find('.scoreboad')
+      , that = this
+      ;
+
+    setTimeout(function () {
+      that.audioFinish.load();
+      that.audioFinish.play();
+    }, 500);
+
     scoreboad.animate({
       width: '100%',
       height: '100%'

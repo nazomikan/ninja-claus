@@ -14,6 +14,10 @@
     field.build();
     audio.loop = true;
     audio.play();
+
+    pubsub.subscribeOnce('game.over', function () {
+      audio.volume = 0.1;
+    });
   };
 
   Namespace.create('app.Game').means(Game);
