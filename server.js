@@ -46,8 +46,9 @@ var server = http.createServer(app).listen(app.get('port'), function(err){
   console.log("Express server listening on port " + app.get('port'));
 });
 
-var io = require('socket.io').listen(server);
-io.set('log level', 1);
+var io = require('socket.io').listen(server, {
+  'log level': 1
+});
 
 
 // UUID Hash
