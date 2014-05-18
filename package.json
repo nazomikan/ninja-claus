@@ -1,20 +1,24 @@
 {
-  "name": "nko4-kusattamikan",
+  "name": "ninja-claus",
+  "private": true,
   "version": "0.0.1",
-  "description": "kusattamikan",
+  "description": "You will distribute presents to the children become Santa Claus(Ninja Claus). Sometimes, You would be fight with rivals.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:nko4/kusattamikan.git"
+    "url": "https://github.com/nazomikan/ninja-claus.git"
   },
   "dependencies": {
-    "nko": "*",
-    "express": "3.4.4",
-    "jade": "0.35.0",
-    "stylus": "*",
+    "express": "~3.4.8",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "jade": "1.3.1",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
     "socket.io": "*",
     "underscore": "~1.5.2"
   },
