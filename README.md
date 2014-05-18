@@ -30,7 +30,7 @@ worked on
 ## Setup
 
 ```
-git clone [this.repo]
+git clone https://github.com/nazomikan/ninja-claus.git
 cd ninja-claus
 npm install
 node server.js
