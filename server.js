@@ -59,7 +59,7 @@ app.get('/', function(req, res){
 // server listen
 server = http.createServer(app).listen(app.get('port'), function(err){
   if (err) { console.error(err); process.exit(-1); }
-  console.log("Express server listening on port " + app.get('port'));
+  console.log("Ninja-Claus listening on port " + app.get('port'));
 });
 
 // game build
